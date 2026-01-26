@@ -1,21 +1,44 @@
 let total = 25 * 60;
 let remaining = total;
+let running = false;
 
 
-function update() {
-const min = Math.floor(remaining / 60);
-const sec = remaining % 60;
-document.getElementById('timer').textContent =
-`${String(min).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;
+const timeEl = document.getElementById('time');
+const bar = document.getElementById('bar');
+const startBtn = document.getElementById('start');
 
 
-document.getElementById('progressBar').style.width =
-`${(remaining / total) * 100}%`;
-
-
-if (remaining > 0) remaining--;
+function render() {
+const m = Math.floor(remaining / 60);
+const s = remaining % 60;
+timeEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+bar.style.width = `${(remaining / total) * 100}%`;
 }
 
 
-update();
-setInterval(update, 1000);
+timeEl.onclick = () => {
+if (running) return;
+const input = prompt('Set focus minutes', remaining / 60);
+if (!input) return;
+total = parseInt(input) * 60;
+remaining = total;
+render();
+};
+
+
+startBtn.onclick = () => {
+if (running) return;
+running = true;
+const interval = setInterval(() => {
+if (remaining > 0) {
+remaining--;
+render();
+} else {
+clearInterval(interval);
+running = false;
+}
+}, 1000);
+};
+
+
+render();
