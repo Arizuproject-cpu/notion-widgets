@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Focus Countdown</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Focus Countdown</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-<main class="card">
-<div class="label">Focus Countdown</div>
-<div class="time" id="time">25:00</div>
-<div class="progress"><div class="bar" id="bar"></div></div>
-<button id="start">Start Focus</button>
-</main>
-<script src="script.js"></script>
+
+  <div class="widget-card">
+    <div class="label">FOCUS SESSION</div>
+
+    <div id="time" class="time-display">25:00</div>
+
+    <button id="startBtn">Start</button>
+
+    <div class="note">Duration set via widget URL</div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
