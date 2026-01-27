@@ -1,8 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const el = document.getElementById("focus-text");
-  if (!el) return;
-
-  const messages = [
+ const messages = [
     "Focus on what moves the needle.",
     "Finish one thing with intention.",
     "Progress beats perfection.",
