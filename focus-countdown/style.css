@@ -1,70 +1,55 @@
-:root {
---primary: #1E293B;
---accent: #10B981;
---bg: #F3F4F6;
---card: #FFFFFF;
---border: #E5E7EB;
---muted: #64748B;
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
 }
-
 
 body {
-margin: 0;
-background: var(--bg);
-font-family: system-ui, sans-serif;
+  margin: 0;
+  background: transparent;
 }
 
-
-.card {
-background: var(--card);
-border: 1px solid var(--border);
-border-radius: 12px;
-padding: 18px 16px;
-max-width: 360px;
-margin: auto;
-box-shadow: 0 6px 18px rgba(0,0,0,.06);
-text-align: center;
+.widget-card {
+  width: 100%;
+  max-width: 360px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  text-align: center;
 }
-
 
 .label {
-font-size: 12px;
-color: var(--muted);
-text-transform: uppercase;
-letter-spacing: .08em;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #64748b;
+  margin-bottom: 8px;
 }
 
-
-.time {
-margin: 14px 0 12px;
-font-family: 'JetBrains Mono', monospace;
-font-size: 40px;
-color: var(--primary);
-cursor: pointer;
+.time-display {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 42px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 16px 0;
 }
-
-
-.progress {
-height: 8px;
-background: #E5E7EB;
-border-radius: 999px;
-overflow: hidden;
-}
-
-
-.bar {
-height: 100%;
-width: 100%;
-background: linear-gradient(90deg, #34D399, #10B981);
-}
-
 
 button {
-margin-top: 14px;
-padding: 8px 14px;
-border-radius: 8px;
-border: 1px solid var(--border);
-background: var(--card);
-font-size: 13px;
-cursor: pointer;
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background: #10b981;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.note {
+  font-size: 11px;
+  color: #94a3b8;
+  margin-top: 10px;
 }
