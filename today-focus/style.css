@@ -11,45 +11,36 @@ body {
 .widget-card {
   width: 100%;
   max-width: 360px;
+  height: 120px; /* aman di Notion */
   padding: 20px;
   border-radius: 16px;
   background: #ffffff;
   box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  overflow: hidden;
 }
 
 .label {
   font-size: 12px;
   letter-spacing: 1px;
   color: #64748b;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-.focus-line {
+.focus-text {
   font-family: "JetBrains Mono", monospace;
-  font-size: 18px;
+  font-size: 16px;
   color: #1e293b;
-  min-height: 28px;
   white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .cursor {
-  animation: blink 1s infinite;
   margin-left: 2px;
+  animation: blink 1s infinite;
 }
 
 @keyframes blink {
   0%, 50% { opacity: 1; }
   51%, 100% { opacity: 0; }
-}
-
-/* subtle floating motion */
-.floating {
-  animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-2px); }
-  100% { transform: translateY(0px); }
 }
