@@ -1,29 +1,42 @@
-const dailyMessages = [
+<script>
+  window.onload = function () {
+    const messages = [
       "Focus on progress, not perfection.",
       "One small step today builds momentum.",
       "Discipline today creates freedom tomorrow.",
       "Do the important thing before the urgent one.",
       "Consistency beats motivation every time.",
-      "Show up, even when it feels hard.",
+      "Show up even when it feels uncomfortable.",
       "Clarity comes from action, not overthinking."
     ];
 
-    const todayIndex = new Date().getDay(); // 0 - 6
-    const message = dailyMessages[todayIndex];
+    const today = new Date().getDay();
+    const message = messages[today];
 
-    const textEl = document.getElementById("focusText");
-    let charIndex = 0;
+    const el = document.getElementById("focusText");
+    let index = 0;
+    let isDeleting = false;
 
-    function typeEffect() {
-      if (charIndex < message.length) {
-        textEl.textContent += message.charAt(charIndex);
-        charIndex++;
-        setTimeout(typeEffect, 40);
+    function loopTyping() {
+      if (!isDeleting) {
+        el.textContent = message.substring(0, index + 1);
+        index++;
+
+        if (index === message.length) {
+          setTimeout(() => isDeleting = true, 1800);
+        }
+      } else {
+        el.textContent = message.substring(0, index - 1);
+        index--;
+
+        if (index === 0) {
+          isDeleting = false;
+        }
       }
+
+      setTimeout(loopTyping, isDeleting ? 35 : 45);
     }
 
-    typeEffect();
-  </script>
-
-</body>
-</html>
+    loopTyping();
+  };
+</script>
