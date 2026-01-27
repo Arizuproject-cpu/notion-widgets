@@ -1,37 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
-
+* {
+  box-sizing: border-box;
+  font-family: Inter, system-ui, sans-serif;
+}
 
 body {
-margin: 0;
-background: #F3F4F6;
-font-family: system-ui, sans-serif;
+  margin: 0;
+  background: transparent;
 }
 
-
-.card {
-background: #FFFFFF;
-border: 1px solid #E5E7EB;
-border-radius: 12px;
-padding: 18px 16px;
-max-width: 360px;
-margin: auto;
-box-shadow: 0 6px 18px rgba(0,0,0,.06);
-text-align: center;
+.widget-card {
+  width: 100%;
+  max-width: 360px;
+  padding: 20px;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
 }
-
 
 .label {
-font-size: 12px;
-color: #64748B;
-text-transform: uppercase;
-letter-spacing: .08em;
-margin-bottom: 14px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: #64748b;
+  margin-bottom: 12px;
 }
 
+.focus-line {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 18px;
+  color: #1e293b;
+  min-height: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+}
 
-.typing {
-font-family: 'JetBrains Mono', monospace;
-font-size: 18px;
-color: #1E293B;
-min-height: 48px;
+.cursor {
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* subtle floating motion */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-2px); }
+  100% { transform: translateY(0px); }
 }
