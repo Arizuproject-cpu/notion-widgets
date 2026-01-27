@@ -1,33 +1,29 @@
-const focusByDay = [
-  "Start the week with small discipline",
-  "Finish one important thing today",
-  "Focus matters more than being busy",
-  "Done is better than perfect",
-  "Close the week with clarity",
-  "Reflect, refine, and reset",
-  "Prepare calmly for the next week"
-];
+const dailyMessages = [
+      "Focus on progress, not perfection.",
+      "One small step today builds momentum.",
+      "Discipline today creates freedom tomorrow.",
+      "Do the important thing before the urgent one.",
+      "Consistency beats motivation every time.",
+      "Show up, even when it feels hard.",
+      "Clarity comes from action, not overthinking."
+    ];
 
-const day = new Date().getDay();
-const message = focusByDay[day === 0 ? 6 : day - 1];
+    const todayIndex = new Date().getDay(); // 0 - 6
+    const message = dailyMessages[todayIndex];
 
-const textEl = document.getElementById("text");
+    const textEl = document.getElementById("focusText");
+    let charIndex = 0;
 
-let index = 0;
-let deleting = false;
-
-function loopTyping() {
-  if (!deleting) {
-    textEl.textContent = message.slice(0, index++);
-    if (index > message.length) {
-      setTimeout(() => deleting = true, 2000);
+    function typeEffect() {
+      if (charIndex < message.length) {
+        textEl.textContent += message.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeEffect, 40);
+      }
     }
-  } else {
-    textEl.textContent = message.slice(0, index--);
-    if (index === 0) {
-      deleting = false;
-    }
-  }
-}
 
-setInterval(loopTyping, 90);
+    typeEffect();
+  </script>
+
+</body>
+</html>
