@@ -4,3 +4,107 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Today Focus</title>
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background: #F3F4F6;
+    font-family:
+      Inter,
+      system-ui,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      sans-serif;
+  }
+
+  .widget {
+    width: 100%;
+    min-height: 140px;
+    padding: 18px;
+    background: #ffffff;
+    border-radius: 16px;
+    border: 1px solid #E5E7EB;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .header {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    color: #6B7280;
+  }
+
+  .text {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.65;
+    color: #111827;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .cursor {
+    display: inline-block;
+    margin-left: 4px;
+    font-weight: 700;
+    color: #10B981;
+    animation: blink 1s infinite;
+  }
+
+  @keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0; }
+  }
+</style>
+
+  <script>
+  window.onload = function () {
+    const messages = [
+      "Focus on progress, not perfection.",
+      "One small step today builds momentum.",
+      "Discipline today creates freedom tomorrow.",
+      "Do the important thing before the urgent one.",
+      "Consistency beats motivation every time.",
+      "Show up even when it feels uncomfortable.",
+      "Clarity comes from action, not overthinking."
+    ];
+
+    const today = new Date().getDay();
+    const message = messages[today];
+
+    const el = document.getElementById("focusText");
+    let index = 0;
+    let isDeleting = false;
+
+    function loopTyping() {
+      if (!isDeleting) {
+        el.textContent = message.substring(0, index + 1);
+        index++;
+
+        if (index === message.length) {
+          setTimeout(() => isDeleting = true, 1800);
+        }
+      } else {
+        el.textContent = message.substring(0, index - 1);
+        index--;
+
+        if (index === 0) {
+          isDeleting = false;
+        }
+      }
+
+      setTimeout(loopTyping, isDeleting ? 35 : 45);
+    }
+
+    loopTyping();
+  };
+</script>
+
