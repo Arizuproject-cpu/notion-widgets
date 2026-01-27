@@ -8,27 +8,26 @@ const focusByDay = [
   "Prepare calmly for the next week"
 ];
 
-// Adjust Sunday index
-const today = new Date().getDay();
-const focusText = focusByDay[today === 0 ? 6 : today - 1];
+const day = new Date().getDay();
+const message = focusByDay[day === 0 ? 6 : day - 1];
 
 const textEl = document.getElementById("text");
 
-let charIndex = 0;
-let isDeleting = false;
+let index = 0;
+let deleting = false;
 
-function typingLoop() {
-  if (!isDeleting) {
-    textEl.textContent = focusText.slice(0, charIndex++);
-    if (charIndex > focusText.length) {
-      setTimeout(() => isDeleting = true, 2000);
+function loopTyping() {
+  if (!deleting) {
+    textEl.textContent = message.slice(0, index++);
+    if (index > message.length) {
+      setTimeout(() => deleting = true, 2000);
     }
   } else {
-    textEl.textContent = focusText.slice(0, charIndex--);
-    if (charIndex === 0) {
-      isDeleting = false;
+    textEl.textContent = message.slice(0, index--);
+    if (index === 0) {
+      deleting = false;
     }
   }
 }
 
-setInterval(typingLoop, 80);
+setInterval(loopTyping, 90);
