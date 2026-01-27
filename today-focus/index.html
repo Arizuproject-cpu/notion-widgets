@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,7 +10,7 @@
       margin: 0;
       padding: 0;
       width: 100%;
-      height: 120px; /* ⬅️ PAKSA TINGGI */
+      height: 120px; /* KUNCI NOTION */
       background: #ffffff;
       font-family: Inter, system-ui, sans-serif;
     }
@@ -21,6 +21,9 @@
       border-radius: 14px;
       border: 1px solid #e5e7eb;
       background: linear-gradient(180deg, #ffffff, #f3f4f6);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .label {
@@ -28,20 +31,54 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       color: #64748b;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
     }
 
     .focus {
       font-size: 18px;
       font-weight: 800;
+      line-height: 1.35;
       color: #1e293b;
+      word-break: break-word;
     }
   </style>
 </head>
+
 <body>
   <div class="widget">
     <div class="label">TODAY FOCUS</div>
-    <div class="focus">Focus on what truly matters.</div>
+    <div id="focus" class="focus"></div>
   </div>
+
+  <script>
+    const messages = [
+      "Focus on what truly matters.",
+      "Finish one thing with intention.",
+      "Progress beats perfection.",
+      "Clarity creates momentum.",
+      "Do less, but do it better.",
+      "Consistency compounds quietly.",
+      "Today decides tomorrow."
+    ];
+
+    const text = messages[new Date().getDate() % messages.length];
+    const el = document.getElementById("focus");
+    let i = 0;
+
+    function type() {
+      if (i <= text.length) {
+        el.textContent = text.slice(0, i);
+        i++;
+        setTimeout(type, 55);
+      } else {
+        setTimeout(() => {
+          i = 0;
+          type();
+        }, 2500);
+      }
+    }
+
+    type();
+  </script>
 </body>
 </html>
