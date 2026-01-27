@@ -66,34 +66,45 @@
   </div>
 
   <script>
-    window.onload = function () {
-      const messages = [
-        "Focus on progress, not perfection.",
-        "One small step today builds momentum.",
-        "Discipline today creates freedom tomorrow.",
-        "Do the important thing before the urgent one.",
-        "Consistency beats motivation every time.",
-        "Show up even when it feels uncomfortable.",
-        "Clarity comes from action, not overthinking."
-      ];
+  window.onload = function () {
+    const messages = [
+      "Focus on progress, not perfection.",
+      "One small step today builds momentum.",
+      "Discipline today creates freedom tomorrow.",
+      "Do the important thing before the urgent one.",
+      "Consistency beats motivation every time.",
+      "Show up even when it feels uncomfortable.",
+      "Clarity comes from action, not overthinking."
+    ];
 
-      const today = new Date().getDay();
-      const message = messages[today];
+    const today = new Date().getDay();
+    const message = messages[today];
 
-      const el = document.getElementById("focusText");
-      let i = 0;
+    const el = document.getElementById("focusText");
+    let index = 0;
+    let isDeleting = false;
 
-      function typeText() {
-        if (i < message.length) {
-          el.textContent += message.charAt(i);
-          i++;
-          setTimeout(typeText, 40);
+    function loopTyping() {
+      if (!isDeleting) {
+        el.textContent = message.substring(0, index + 1);
+        index++;
+
+        if (index === message.length) {
+          setTimeout(() => isDeleting = true, 1800);
+        }
+      } else {
+        el.textContent = message.substring(0, index - 1);
+        index--;
+
+        if (index === 0) {
+          isDeleting = false;
         }
       }
 
-      typeText();
-    };
-  </script>
+      setTimeout(loopTyping, isDeleting ? 35 : 45);
+    }
 
-</body>
-</html>
+    loopTyping();
+  };
+</script>
+
