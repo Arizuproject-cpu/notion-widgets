@@ -1,28 +1,34 @@
-const messages = [
-'Focus on what truly matters today.',
-'Small progress is still progress.',
-'Do one thing with full attention.',
-'Consistency beats intensity.',
-'Clarity comes from action.',
-'Finish what you started.',
-'Your future self will thank you.'
+const focusByDay = [
+  "Start the week with small discipline",
+  "Finish one important thing today",
+  "Focus matters more than being busy",
+  "Done is better than perfect",
+  "Close the week with clarity",
+  "Reflect, refine, and reset",
+  "Prepare calmly for the next week"
 ];
 
+// Adjust Sunday index
+const today = new Date().getDay();
+const focusText = focusByDay[today === 0 ? 6 : today - 1];
 
-const todayIndex = new Date().getDate() % messages.length;
-const text = messages[todayIndex];
+const textEl = document.getElementById("text");
 
+let charIndex = 0;
+let isDeleting = false;
 
-const el = document.getElementById('typing');
-let i = 0;
-
-
-function type() {
-if (i <= text.length) {
-el.textContent = text.slice(0, i++);
-setTimeout(type, 70);
+function typingLoop() {
+  if (!isDeleting) {
+    textEl.textContent = focusText.slice(0, charIndex++);
+    if (charIndex > focusText.length) {
+      setTimeout(() => isDeleting = true, 2000);
+    }
+  } else {
+    textEl.textContent = focusText.slice(0, charIndex--);
+    if (charIndex === 0) {
+      isDeleting = false;
+    }
+  }
 }
-}
 
-
-type();
+setInterval(typingLoop, 80);
