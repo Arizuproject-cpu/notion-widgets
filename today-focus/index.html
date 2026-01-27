@@ -4,81 +4,16 @@
   <meta charset="UTF-8" />
   <title>Today Focus</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    body {
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-    }
-
-    .widget {
-      width: 100%;
-      padding: 20px;
-      border-radius: 16px;
-      background: #ffffff;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-    }
-
-    .title {
-      font-size: 12px;
-      letter-spacing: 0.2em;
-      font-weight: 600;
-      color: #9aa0a6;
-      margin-bottom: 12px;
-    }
-
-    .focus {
-      font-size: clamp(18px, 3vw, 26px);
-      font-weight: 700;
-      color: #202124;
-      line-height: 1.4;
-      word-wrap: break-word;
-    }
-
-    .cursor {
-      color: #22c55e;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
-    }
-  </style>
+   <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
   <div class="widget">
-    <div class="title">TODAY FOCUS</div>
-    <div class="focus">
-      <span id="text"></span><span class="cursor">|</span>
-    </div>
+    <div class="label">TODAY FOCUS</div>
+    <div id="focus-text" class="focus"></div>
   </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const textEl = document.getElementById("text");
-
-      if (!textEl) return;
-
-      const sentence = "Focus on progress, not perfection.";
-      let index = 0;
-
-      function type() {
-        if (index < sentence.length) {
-          textEl.textContent += sentence.charAt(index);
-          index++;
-          setTimeout(type, 60);
-        }
-      }
-
-      type();
-    });
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
