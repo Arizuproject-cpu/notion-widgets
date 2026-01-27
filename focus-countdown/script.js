@@ -1,44 +1,32 @@
-let total = 25 * 60;
-let remaining = total;
-let running = false;
+const params = new URLSearchParams(window.location.search);
+const minutes = parseInt(params.get("minutes")) || 25;
 
+let totalSeconds = minutes * 60;
+let interval = null;
 
-const timeEl = document.getElementById('time');
-const bar = document.getElementById('bar');
-const startBtn = document.getElementById('start');
+const timeEl = document.getElementById("time");
+const btn = document.getElementById("startBtn");
 
-
-function render() {
-const m = Math.floor(remaining / 60);
-const s = remaining % 60;
-timeEl.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
-bar.style.width = `${(remaining / total) * 100}%`;
+function updateDisplay() {
+  const m = Math.floor(totalSeconds / 60);
+  const s = totalSeconds % 60;
+  timeEl.textContent =
+    String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
 }
 
+btn.addEventListener("click", () => {
+  if (interval) return;
 
-timeEl.onclick = () => {
-if (running) return;
-const input = prompt('Set focus minutes', remaining / 60);
-if (!input) return;
-total = parseInt(input) * 60;
-remaining = total;
-render();
-};
+  interval = setInterval(() => {
+    totalSeconds--;
+    updateDisplay();
 
+    if (totalSeconds <= 0) {
+      clearInterval(interval);
+      interval = null;
+      btn.textContent = "Done";
+    }
+  }, 1000);
+});
 
-startBtn.onclick = () => {
-if (running) return;
-running = true;
-const interval = setInterval(() => {
-if (remaining > 0) {
-remaining--;
-render();
-} else {
-clearInterval(interval);
-running = false;
-}
-}, 1000);
-};
-
-
-render();
+updateDisplay();
