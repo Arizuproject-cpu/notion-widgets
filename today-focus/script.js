@@ -1,5 +1,6 @@
- const messages = [
-    "Focus on what moves the needle.",
+<script>
+  const messages = [
+    "Focus on what truly matters.",
     "Finish one thing with intention.",
     "Progress beats perfection.",
     "Clarity creates momentum.",
@@ -8,23 +9,30 @@
     "Today decides tomorrow."
   ];
 
-  const todayIndex = new Date().getDate() % messages.length;
-  const text = messages[todayIndex];
+  const el = document.getElementById("focus");
+  const text = messages[new Date().getDate() % messages.length];
 
-  let i = 0;
+  let index = 0;
+  let typingSpeed = 55;
 
-  function typeText() {
-    if (i <= text.length) {
-      el.textContent = text.slice(0, i);
-      i++;
-      setTimeout(typeText, 55);
+  function typeEffect() {
+    if (index < text.length) {
+      el.textContent += text.charAt(index);
+      index++;
+      setTimeout(typeEffect, typingSpeed);
     } else {
+      // pause setelah selesai
       setTimeout(() => {
-        i = 0;
-        typeText();
-      }, 2500);
+        el.textContent = "";
+        index = 0;
+        typeEffect();
+      }, 3000);
     }
   }
 
-  typeText();
-});
+  // ⏳ delay kecil agar Notion iframe siap
+  setTimeout(() => {
+    el.textContent = "";
+    typeEffect();
+  }, 600);
+</script>
