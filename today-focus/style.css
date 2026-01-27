@@ -1,25 +1,32 @@
-/* Reset ringan */
 * {
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
   background: transparent;
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
 }
 
-/* Card widget */
+/* WIDGET CONTAINER */
 .widget {
   width: 100%;
+  min-height: 90px; /* ⬅️ INI KUNCI UTAMA */
   padding: 14px 16px;
+
   background: linear-gradient(180deg, #ffffff, #f3f4f6);
   border-radius: 14px;
   border: 1px solid #e5e7eb;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* Label kecil */
+/* LABEL */
 .label {
   font-size: 11px;
   font-weight: 700;
@@ -28,12 +35,13 @@ body {
   margin-bottom: 6px;
 }
 
-/* Focus text */
+/* TEXT */
 .focus {
-  font-size: clamp(14px, 3.5vw, 18px);
+  font-size: clamp(14px, 4vw, 18px);
   font-weight: 800;
   line-height: 1.35;
   color: #1e293b;
-  word-wrap: break-word;
+
   white-space: normal;
+  word-break: break-word;
 }
