@@ -1,19 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Today Focus</title>
 
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 120px; /* ⬅️ PAKSA TINGGI */
+      background: #ffffff;
+      font-family: Inter, system-ui, sans-serif;
+    }
 
-   <link rel="stylesheet" href="style.css" />
+    .widget {
+      height: 120px;
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid #e5e7eb;
+      background: linear-gradient(180deg, #ffffff, #f3f4f6);
+    }
+
+    .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .focus {
+      font-size: 18px;
+      font-weight: 800;
+      color: #1e293b;
+    }
+  </style>
 </head>
 <body>
   <div class="widget">
     <div class="label">TODAY FOCUS</div>
-    <div id="focus-text" class="focus"></div>
+    <div class="focus">Focus on what truly matters.</div>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
