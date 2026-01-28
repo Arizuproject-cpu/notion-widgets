@@ -1,77 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARIZU Notion Widgets</title>
-    <style>
-        :root { --text: #111; --bg: #f5f5f5; }
-        @media (prefers-color-scheme: dark) { :root { --text: #fff; --bg: #191919; } }
-        body {
-            font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 40px;
-            line-height: 1.6;
-            transition: background 0.3s, color 0.3s;
-        }
-        h1 { margin-bottom: 10px; }
-        p { opacity: 0.8; margin-bottom: 40px; }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            border: 1px solid rgba(128,128,128,0.2);
-            border-radius: 12px;
-            padding: 20px;
-            text-decoration: none;
-            color: inherit;
-            transition: transform 0.2s, border-color 0.2s;
-            display: block;
-        }
-        .card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(128,128,128,0.5);
-        }
-        .card h3 { margin: 0 0 10px 0; font-size: 18px; }
-        .card span { font-size: 14px; opacity: 0.6; }
-        iframe {
-            width: 100%;
-            height: 100px;
-            border: none;
-            margin-top: 15px;
-            pointer-events: none;
-        }
-    </style>
-</head>
-<body>
-    <h1>ARIZU Notion Widgets</h1>
-    <p>Minimalist widgets for your Notion dashboard. Click to view full widget.</p>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ARIZU WIDGETS</title>
 
-    <div class="grid">
-        <a href="./time-left-month/" class="card">
-            <h3>Time Left This Month</h3>
-            <span>Shows remaining time in current month</span>
-            <iframe src="./time-left-month/" scrolling="no"></iframe>
-        </a>
-        <a href="./month-progress/" class="card">
-            <h3>Month Progress</h3>
-            <span>Visual progress bar for the month</span>
-            <iframe src="./month-progress/" scrolling="no"></iframe>
-        </a>
-        <a href="./focus-countdown/" class="card">
-            <h3>Focus Countdown</h3>
-            <span>Countdown to your custom deadline</span>
-            <iframe src="./focus-countdown/" scrolling="no"></iframe>
-        </a>
-        <a href="./today-focus/" class="card">
-            <h3>Today Focus</h3>
-            <span>Simple focus reminder text</span>
-            <iframe src="./today-focus/" scrolling="no"></iframe>
-        </a>
+<style>
+:root {
+  --bg: #020617;
+  --panel: #0f172a;
+  --card: #111827;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+  --primary: #10b981;
+  --radius: 20px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background:
+    radial-gradient(900px circle at 50% -250px, #1f2937, transparent),
+    var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 64px 20px 96px;
+}
+
+/* HERO */
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (min-width: 960px) {
+  .hero {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+.hero h1 {
+  font-size: clamp(36px, 5vw, 56px);
+  margin: 0 0 14px;
+}
+
+.hero p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 560px;
+}
+
+/* CTA */
+.cta {
+  display: inline-block;
+  margin-top: 28px;
+  padding: 14px 28px;
+  background: linear-gradient(180deg, #34d399, var(--primary));
+  color: #022c22;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 14px 40px rgba(16,185,129,0.35);
+}
+
+/* PREVIEW */
+.preview {
+  display: grid;
+  gap: 24px;
+}
+
+/* WIDGET CARD */
+.widget {
+  background: linear-gradient(180deg, #0b1220, var(--card));
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.45),
+    inset 0 0 0 1px rgba(255,255,255,0.04);
+  animation: float 6s ease-in-out infinite;
+}
+
+.widget:nth-child(2) {
+  animation-delay: 1.2s;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+.widget-header {
+  font-size: 12px;
+  letter-spacing: 1.4px;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+
+/* REAL WIDGET EMBED */
+.widget iframe {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  min-height: 120px;
+}
+
+/* FEATURES */
+.features {
+  margin-top: 100px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px,1fr));
+  gap: 24px;
+}
+
+.feature {
+  background: rgba(255,255,255,0.03);
+  padding: 22px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.feature h3 {
+  margin: 0 0 8px;
+  font-size: 16px;
+}
+
+.feature p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 120px;
+  text-align: center;
+  font-size: 13px;
+  color: #64748b;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<!-- HERO -->
+<section class="hero">
+  <div>
+    <h1>ARIZU WIDGETS</h1>
+    <p>
+      Minimal, functional widgets crafted to help you focus,
+      track progress, and stay intentional — without noise
+      or unnecessary complexity.
+    </p>
+
+    <a class="cta" href="#features">Get the Widgets</a>
+  </div>
+
+  <!-- LIVE PREVIEW -->
+  <div class="preview">
+
+    <div class="widget">
+      <div class="widget-header">TODAY FOCUS</div>
+      https://arizuproject-cpu.github.io/notion-widgets/today-focus/
+      <iframe src="https://USERNAME.github.io/today-focus/"></iframe>
     </div>
+
+    <div class="widget">
+      <div class="widget-header">MONTH PROGRESS</div>
+     https://arizuproject-cpu.github.io/notion-widgets/month-progress/
+      <iframe src="https://USERNAME.github.io/month-progress/"></iframe>
+    </div>
+
+  </div>
+</section>
+
+<!-- FEATURES + COPYWRITING -->
+<section class="features" id="features">
+
+  <div class="feature">
+    <h3>Designed for Focus</h3>
+    <p>
+      Every widget is intentionally minimal,
+      helping you stay present and avoid distraction.
+    </p>
+  </div>
+
+  <div class="feature">
+    <h3>Responsive Everywhere</h3>
+    <p>
+      Automatically adapts to any screen size
+      without breaking layout or cutting content.
+    </p>
+  </div>
+
+  <div class="feature">
+    <h3>Plug & Use</h3>
+    <p>
+      No setup, no accounts, no learning curve.
+      Just embed and start using.
+    </p>
+  </div>
+
+  <div class="feature">
+    <h3>Built to Last</h3>
+    <p>
+      Lightweight, fast, and future-proof —
+      designed as a long-term productivity tool.
+    </p>
+  </div>
+
+</section>
+
+<div class="footer">
+  © 2026 ARIZU WIDGETS
+</div>
+
+</div>
 </body>
 </html>
