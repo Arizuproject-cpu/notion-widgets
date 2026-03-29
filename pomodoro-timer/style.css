@@ -1,0 +1,177 @@
+:root {
+  --primary: #1E293B;
+  --accent: #10B981;
+  --accent-break: #3B82F6; /* Blue for break times */
+  --bg: #F3F4F6;
+  --card: #FFFFFF;
+  --border: #E5E7EB;
+  --muted: #64748B;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.widget-card {
+  width: 100%;
+  max-width: 360px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+}
+
+/* Tabs */
+.mode-tabs {
+  display: flex;
+  justify-content: space-between;
+  background: var(--bg);
+  border-radius: 999px;
+  padding: 6px;
+  margin-bottom: 30px;
+}
+
+.mode-btn {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mode-btn:hover {
+  color: var(--primary);
+}
+
+.mode-btn.active {
+  background: var(--card);
+  color: var(--primary);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Timer Circle */
+.timer-container {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 30px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg); /* Start at 12 o'clock */
+}
+
+.progress-ring__circle-bg {
+  stroke: var(--bg);
+}
+
+.progress-ring__circle {
+  stroke: var(--accent);
+  stroke-dasharray: 628.3; /* 2 * PI * 100 */
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 1s linear, stroke 0.4s ease;
+}
+
+.time-display {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 52px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.control-btn {
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: inherit;
+}
+
+.control-btn.primary {
+  flex: 1;
+  padding: 16px 24px;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(30, 41, 59, 0.2);
+}
+
+.control-btn.primary:hover {
+  background: #0F172A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(30, 41, 59, 0.3);
+}
+
+.control-btn.primary:active {
+  transform: translateY(0);
+}
+
+/* Pause State */
+.control-btn.primary.running {
+  background: var(--bg);
+  color: var(--primary);
+  box-shadow: none;
+  border: 1px solid var(--border);
+}
+
+.control-btn.primary.running:hover {
+  background: #E2E8F0;
+  transform: none;
+}
+
+.control-btn.secondary {
+  width: 56px;
+  height: 56px;
+  background: var(--bg);
+  color: var(--muted);
+  border: 1px solid var(--border);
+}
+
+.control-btn.secondary:hover {
+  background: #E2E8F0;
+  color: var(--primary);
+}
+
+.control-btn.secondary svg {
+  width: 22px;
+  height: 22px;
+}

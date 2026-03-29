@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pomodoro Timer</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main class="widget-card">
+    <!-- Mode Tabs -->
+    <div class="mode-tabs">
+      <button class="mode-btn active" data-mode="focus">Focus</button>
+      <button class="mode-btn" data-mode="short">Short Break</button>
+      <button class="mode-btn" data-mode="long">Long Break</button>
+    </div>
+
+    <!-- Timer Circle -->
+    <div class="timer-container">
+      <svg class="progress-ring" width="220" height="220">
+        <!-- Background circle -->
+        <circle class="progress-ring__circle-bg" stroke-width="8" fill="transparent" r="100" cx="110" cy="110"/>
+        <!-- Active Progress circle -->
+        <circle class="progress-ring__circle" stroke-width="8" fill="transparent" r="100" cx="110" cy="110"/>
+      </svg>
+      <div id="time" class="time-display">25:00</div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+      <button id="startBtn" class="control-btn primary">Start Session</button>
+      <button id="resetBtn" class="control-btn secondary" title="Reset">
+        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+      </button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
